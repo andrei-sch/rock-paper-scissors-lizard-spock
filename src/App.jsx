@@ -4,8 +4,7 @@ import Nav from "./components/Nav/Nav";
 
 const App = () => {
   return (
-    <div>
-      <p>Your cleaned App component</p>
+    <div className="container-app">
       <Nav />
       <Footer />
     </div>

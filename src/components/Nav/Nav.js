@@ -3,7 +3,11 @@ import "./Nav.css"
 
 function Nav() {
   return (
-    <div>Nav</div>
+    <nav>
+      <div className="logo">
+        <p id="logo-text">ROCK PAPER SCISSORS LIZARD SPOCK</p>
+      </div>
+    </nav>
   )
 }
 
