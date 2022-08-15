@@ -8,13 +8,14 @@
 
 body {
   font-family: "Segoe UI", Arial, Helvetica, sans-serif;
-  background-color: antiquewhite;
+  background-color: #ffffff;
+  opacity: 0.8;
+  background-image:  linear-gradient(#f6f6f6 2px, transparent 2px), linear-gradient(90deg, #f6f6f6 2px, transparent 2px), linear-gradient(#f6f6f6 1px, transparent 1px), linear-gradient(90deg, #f6f6f6 1px, #ffffff 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
 }
 
 .container-app{
-  background-image: url('./Assets/unsplash__kUxT8WkoeY_optimized.png');
-  background-repeat: no-repeat;
-  background-size: cover;
   min-height: 100vh;
   margin: 0 auto;
   width: 60%;
