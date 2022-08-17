@@ -1,25 +1,50 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
-import "./Nav.css"
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./Nav.css";
 
 function Nav() {
-
-  function alertHandler(){
-    alert("rules")
+  function alertHandler() {
+    alert("rules");
   }
+
+  let activeStyle = {
+    color: "#f00",
+  };
 
   return (
     <nav>
-      <div className="logo">
+      <section className="nav-logo-section">
         <p id="logo-text">ROCK PAPER SCISSORS LIZARD SPOCK</p>
-        <section className="nav-buttons-section">
-          <NavLink to="/">New Game</NavLink>
-          <NavLink to="stats">Stats</NavLink>
-          <NavLink to="#" onClick={alertHandler}>Rulz</NavLink>
-        </section>
-      </div>
+      </section>
+      <section className="nav-buttons-section">
+        <NavLink
+          to="/"
+          className="nav-links"
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          end
+        >
+          new game
+        </NavLink>
+        <NavLink
+          to="stats"
+          className="nav-links"
+          style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          end
+        >
+          stats
+        </NavLink>
+        <NavLink
+          to="#rulz"
+          className="nav-links"
+          // style={({ isActive }) => (isActive ? activeStyle : undefined)} TBD
+          onClick={alertHandler}
+          end
+        >
+          rulz
+        </NavLink>
+      </section>
     </nav>
-  )
+  );
 }
 
-export default Nav
+export default Nav;
