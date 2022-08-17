@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import RulzModal from "../Modals/RulzModal/RulzModal";
 import "./Nav.css";
 
+
 function Nav() {
-  function alertHandler() {
-    alert("rules");
-  }
+
+  const [isRulzModalOpen, setIsRulzModalOpen] = useState(false)
 
   let activeStyle = {
     color: "#f00",
@@ -37,12 +38,13 @@ function Nav() {
           to="#rulz"
           className="nav-links"
           // style={({ isActive }) => (isActive ? activeStyle : undefined)} TBD
-          onClick={alertHandler}
+          onClick={()=>setIsRulzModalOpen(true)}
           end
         >
           rulz
         </NavLink>
       </section>
+      {isRulzModalOpen ? <RulzModal open={isRulzModalOpen} onClose={()=>setIsRulzModalOpen(false)}/> : null}
     </nav>
   );
 }

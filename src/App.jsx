@@ -5,6 +5,7 @@ import Stats from "./Pages/Stats/Stats";
 
 const App = () => {
   return (
+    <>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}>
@@ -12,6 +13,7 @@ const App = () => {
           </Route>
         </Routes>
       </BrowserRouter>
+      </>
   );
 };
 
