@@ -1,0 +1,29 @@
+footer{
+    font-family: 'Edu SA Beginner', cursive;
+    font-weight: 500;
+    font-size: 1.2rem;
+    width: 80%;
+    height: 100px;
+    margin-top: 200px;
+}
+
+.footer-container {
+    border-top: 2px #000 solid;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    min-width: 100%;
+    padding-top: 10px;
+}
+
+.footer-social-media{
+    min-width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.footer-social-media img {
+    height: 2rem;
+}
