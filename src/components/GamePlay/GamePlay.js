@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
+import ImageGetter from '../ImageGetter/ImageGetter'
 import './GamePlay.css'
-
-import rockcircle from "../../Assets/rock-circle.svg"
-import papercircle from "../../Assets/paper-circle.svg"
-import scissorscircle from "../../Assets/scissors-circle.svg"
-import lizardcircle from "../../Assets/lizard-circle.svg"
-import spockcircle from "../../Assets/spock-circle.svg"
 
 function GamePlay() {
 
@@ -16,6 +11,10 @@ function GamePlay() {
     const [yourChoice, setYourChoice] = useState("rock")
     const [computerChoice, setComputerChoice] = useState("rock")
     const [gameOver, setGameOver] = useState(false)
+
+    const choices = ['rock','paper','scissors','lizard','spock']
+
+
 
   return (
     <section className='game-container'>
@@ -29,19 +28,24 @@ function GamePlay() {
         <div className="chosen-options-wrapper">
             <div className="my-chosen-sign">
                 <span className="my-chosen-sign-text">you</span>
-                <img src={`../images/${yourChoice}.svg`} alt={yourChoice} className="my-chosen-sign-image" />
+                <ImageGetter name={`${yourChoice}`} classStyle={'my-chosen-sign-image'} />
             </div>
             <div className="computer-chosen-sign">
-                <img src={`../images/${computerChoice}.svg`} alt={computerChoice} className="computer-chosen-sign-image" />
+                <ImageGetter name={`${computerChoice}`} classStyle={'computer-chosen-sign-image'} />
                 <span className="computer-chosen-sign-text">computer</span>
             </div>
         </div>
         <div className="pick-an-option-buttons">
-            <img src={rockcircle} alt="rockcircle" className='img-circle-options' />
+
+            {choices.map(choice => {
+                return <ImageGetter name={`${choice}-circle`} classStyle={'img-circle-options'} />
+            })}
+
+            {/* <img src={rockcircle} alt="rockcircle" className='img-circle-options' />
             <img src={papercircle} alt="papercircle" className='img-circle-options' />
             <img src={scissorscircle} alt="scissorscircle" className='img-circle-options' />
             <img src={lizardcircle} alt="lizardcircle" className='img-circle-options' />
-            <img src={spockcircle} alt="spockcircle" className='img-circle-options' />
+            <img src={spockcircle} alt="spockcircle" className='img-circle-options' /> */}
         </div>
     </section>
   )
