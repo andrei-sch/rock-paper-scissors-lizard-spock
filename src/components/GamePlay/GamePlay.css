@@ -1,0 +1,61 @@
+.game-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Edu SA Beginner';
+    font-size: 1.3rem;
+    margin-top: 20px;
+}
+
+.current-score {
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 600;
+}
+
+.in-game-turn-message {
+    color: darkgreen;
+    font-weight: 500;
+}
+
+.chosen-options-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 90px;
+    margin-top: 20px;
+}
+.chosen-options-wrapper img {
+    width: 70px;
+}
+.my-chosen-sign,.computer-chosen-sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.my-chosen-sign-image {
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.pick-an-option-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 30px;
+    gap: 10px;
+}
+
+.img-circle-options {
+    width: 80px;
+}

@@ -35,7 +35,7 @@ function Nav() {
           stats
         </NavLink>
         <NavLink
-          to="#rulz"
+          to="#"
           className="nav-links"
           // style={({ isActive }) => (isActive ? activeStyle : undefined)} TBD
           onClick={()=>setIsRulzModalOpen(true)}
