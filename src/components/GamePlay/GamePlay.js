@@ -1,28 +1,165 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImageGetter from "../ImageGetter/ImageGetter";
 import ImageGetterBtn from "../ImageGetter/ImageGetterBtn";
+import EndGame from "../Modals/EndGame/EndGame";
 import "./GamePlay.css";
 
 function GamePlay() {
   const [turnsLeft, setTurnsLeft] = useState(10);
   const [yourCurrentScore, setYourCurrentScore] = useState(0);
   const [computerCurrentScore, setComputerCurrentScore] = useState(0);
-  const [turnMessage, setTurnMessage] = useState("paper covers rock");
-  const [yourChoice, setYourChoice] = useState("rock");
-  const [computerChoice, setComputerChoice] = useState("rock");
+  const [turnMessage, setTurnMessage] = useState("best score of 10 turns wins!");
+  const [yourChoice, setYourChoice] = useState("");
+  const [computerChoice, setComputerChoice] = useState("");
   const [gameOver, setGameOver] = useState(false);
 
-  const choices = ["rock", "paper", "scissors", "lizard", "spock"];
+    const choices = ["rock", "paper", "scissors", "lizard", "spock"];
 
-  const comboPick = yourChoice + computerChoice
+    const handleClickOption = (choice) => {
 
-  const handleClickOption = (choice) => {
-    console.log(choice)
-  }
+        setYourChoice(()=>choice)
+        generateComputerChoice()
+        
+    }
 
+    const generateComputerChoice = () => {
+        const item = choices[Math.floor(Math.random()*choices.length)]
+        setComputerChoice(()=>item)
+        setTurnsLeft(prev => prev - 1)
+        console.log("generateComputerChoice trg")
+    }
+
+    useEffect(() => {
+      
+        const comboPick = yourChoice + computerChoice
+        console.log(comboPick)
+    
+        switch(comboPick){
+            case 'rockrock':
+                setTurnMessage("rock vs rock. Tie!")
+                setYourCurrentScore(prev => prev + 1)
+                setComputerCurrentScore(prev => prev + 1)
+                console.log('rockrock')
+                break;
+            case 'paperpaper':
+                setTurnMessage("paper vs paper. Tie!")
+                setYourCurrentScore(prev => prev + 1)
+                setComputerCurrentScore(prev => prev + 1)
+                console.log('paperpaper')
+                break;
+            case 'scissorsscissors':
+                setTurnMessage("scissors vs scissors. Tie!")
+                setYourCurrentScore(prev => prev + 1)
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'spockspock':
+                setTurnMessage("spock vs spock. Tie!")
+                setYourCurrentScore(prev => prev + 1)
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'lizardlizard':
+                setTurnMessage("lizard vs lizard. Tie!")
+                setYourCurrentScore(prev => prev + 1)
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'rockscissors':
+                setTurnMessage("rock crushes scissors")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'rocklizard':
+                setTurnMessage("rock crushes lizard")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'rockpaper':
+                setTurnMessage("paper covers rock")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'rockspock':
+                setTurnMessage("spock vaporizes rock")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'paperlizard':
+                setTurnMessage("lizard eats paper")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'paperscissors':
+                setTurnMessage("scissors cuts paper")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'paperrock':
+                setTurnMessage("paper covers rock")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'paperspock':
+                setTurnMessage("paper disproves spock")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'spockpaper':
+                setTurnMessage("paper disproves spock")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'spocklizard':
+                setTurnMessage("lizard poisons spock")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'spockrock':
+                setTurnMessage("spock vaporizes rock")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'spockscissors':
+                setTurnMessage("spock smashes scissors")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'scissorslizard':
+                setTurnMessage("scissors decapitates lizard")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'scissorspaper':
+                setTurnMessage("scissors cuts paper")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'scissorsrock':
+                setTurnMessage("rock crushes scissors")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'scissorsspock':
+                setTurnMessage("spock smashes scissors")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'lizardpaper':
+                setTurnMessage("lizard eats paper")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'lizardspock':
+                setTurnMessage("lizard poisons spock")
+                setYourCurrentScore(prev => prev + 1)
+                break;
+            case 'lizardrock':
+                setTurnMessage("rock crushes lizard")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            case 'lizardscissors':
+                setTurnMessage("scissors decapitates lizard")
+                setComputerCurrentScore(prev => prev + 1)
+                break;
+            default:
+                break;
+        }
+
+        if (turnsLeft === 0) {
+            setGameOver(true)
+        }
+    
+      return () => {
+        console.log("cleanup useeffect")
+      }
+    }, [yourChoice,computerChoice,turnsLeft])
+    
 
 
   return (
+    <>
+    {gameOver ? <EndGame yourScore={yourCurrentScore} compScore={computerCurrentScore} /> : null}
     <section className="game-container">
       <div className="turns-left">
         <p>turns left: {turnsLeft}</p>
@@ -35,13 +172,19 @@ function GamePlay() {
       <div className="in-game-turn-message">
         <p>{turnMessage}</p>
       </div>
-      <div className="chosen-options-wrapper">
+      {turnsLeft === 10 
+      ?
+        <div className="choose-your-weapon">
+          <p>choose your weapon:</p>
+        </div>
+        :
+      (<div className="chosen-options-wrapper">
         <div className="my-chosen-sign">
-          <span className="my-chosen-sign-text">you</span>
           <ImageGetter
             name={`${yourChoice}`}
             classStyle={"my-chosen-sign-image"}
           />
+          <span className="my-chosen-sign-text">you</span>
         </div>
         <div className="computer-chosen-sign">
           <ImageGetter
@@ -50,7 +193,10 @@ function GamePlay() {
           />
           <span className="computer-chosen-sign-text">computer</span>
         </div>
-      </div>
+      </div>)
+}
+
+
       <div className="pick-an-option-buttons">
         {choices.map((choice,index) => {
           return (
@@ -71,6 +217,7 @@ function GamePlay() {
             <img src={spockcircle} alt="spockcircle" className='img-circle-options' /> */}
       </div>
     </section>
+    </>
   );
 }
 

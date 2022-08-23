@@ -26,27 +26,44 @@
     font-weight: 500;
 }
 
-.chosen-options-wrapper {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 90px;
-    margin-top: 20px;
-}
-.chosen-options-wrapper img {
-    width: 70px;
-}
-.my-chosen-sign,.computer-chosen-sign {
+.choose-your-weapon {
+    min-height: 170px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;
-    gap: 10px;
+    font-size: 1.6rem;
 }
 
-.my-chosen-sign-image {
+.chosen-options-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    margin-top: 20px;
+    min-height: 200px;
+}
+
+.my-chosen-sign,.computer-chosen-sign {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 130px;
+    height: 200px;
+}
+
+.my-chosen-sign-text,.computer-chosen-sign-text {
+    font-size: 1.4rem;
+}
+
+.computer-chosen-sign-image {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+}
+.my-chosen-sign-image {
+    /* -webkit-transform: scaleX(-1);
+    transform: scaleX(-1); */
 }
 
 .pick-an-option-buttons {

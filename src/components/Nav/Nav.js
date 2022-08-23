@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import RulzModal from "../Modals/RulzModal/RulzModal";
 import "./Nav.css";
 
@@ -11,6 +11,14 @@ function Nav() {
   let activeStyle = {
     color: "#f00",
   };
+ 
+  let location = useLocation()
+
+  const reloadPage = () => {
+    if (location.pathname === "/") {
+      window.location.reload()
+    }
+}
 
   return (
     <nav>
@@ -22,6 +30,7 @@ function Nav() {
           to="/"
           className="nav-links"
           style={({ isActive }) => (isActive ? activeStyle : undefined)}
+          onClick={reloadPage}
           end
         >
           new game

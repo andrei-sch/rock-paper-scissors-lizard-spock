@@ -5,7 +5,7 @@ function ImageGetter({ name, classStyle,classStyleBtn, handleClick }) {
   const image = require(`../../Assets/${name}.svg`);
   if (!image) console.log(`Image ${name} doesn't exist`);
   return (
-    <button className={classStyleBtn} onClick={()=>handleClick()}>
+    <button className={classStyleBtn} onClick={handleClick}>
       <img src={image} alt={name} className={classStyle} />
     </button>
   );
