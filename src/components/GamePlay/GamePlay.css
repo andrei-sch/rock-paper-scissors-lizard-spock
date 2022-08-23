@@ -61,3 +61,12 @@
 .img-circle-options {
     width: 80px;
 }
+
+.img-circle-options-btn {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    outline: inherit;
+}
