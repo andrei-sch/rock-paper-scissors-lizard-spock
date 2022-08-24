@@ -36,7 +36,7 @@ function GamePlay() {
   gameOver && (setTimeout(()=>{
     console.log("FIRED!!!")
     setShowDelayedComponent(true)
-  },2000))
+  },1500))
 
 
   useEffect(() => {
@@ -173,6 +173,7 @@ function GamePlay() {
     const data = {
       id: uuid(),
       date: time.format("DD/MMMM/YYYY"),
+      time: time.format("HH:mm"),
       yourCurrentScore,
       computerCurrentScore,
       result: resultScore === 0 ? "draw" : resultScore > 0 ? "win" : "loss",
