@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Stats.css";
 import SearchBar from "./SearchBar/SearchBar";
 import Results from "./Results/Results";
 import ClearResults from "./ClearResults/ClearResults";
 
 function Stats() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState()
+  const [results, setResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
@@ -14,11 +15,9 @@ function Stats() {
     }
   }, []);
 
-  console.log("data aoutside useeffect", data);
-
   useEffect(() => {
-    if (searchTerm !== "" && data !== null) {
-      console.log("searchTerm2144 ----->", searchTerm);
+    console.log("undefined!!!!",data)
+    if (searchTerm !== "") {
       const newData = data.filter((item) => {
         return (
           item.result.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -34,17 +33,17 @@ function Stats() {
         );
       });
       console.log("newdata --- ",newData)
-      setData(newData);
+      setResults(newData);
     } else {
-      console.log("else triggered")
-      setData(JSON.parse(localStorage.getItem("rpsls")));
+      // console.log("else triggered")
+      setResults(data);
     }
-    console.log("data2144 ----> ", data);
-  }, [searchTerm]);
+    // console.log("data2144 ----> ", results);
+  }, [searchTerm, data]);
 
   function clearStats() {
     localStorage.removeItem("rpsls");
-    setData([]);
+    setResults([]);
   }
 
   function clearSearch() {
@@ -58,7 +57,7 @@ function Stats() {
         setSearchTerm={setSearchTerm}
         clearSearch={clearSearch}
       />
-      <Results data={data} />
+      <Results data={results} />
       <ClearResults clearStats={clearStats} />
     </section>
   );
