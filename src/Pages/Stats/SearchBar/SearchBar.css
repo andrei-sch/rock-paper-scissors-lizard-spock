@@ -1,0 +1,52 @@
+.search-bar-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-bar-box img{
+    width: 1.4rem;
+}
+
+img[alt="closeIcon"] {
+    width: 1.1rem;
+    cursor: pointer;
+}
+
+.search-bar {
+    border: 0;
+    border-bottom: 2px solid #000;
+    font-family: 'Edu SA Beginner';
+    font-size: 1.4rem;
+    outline: 0;
+    color: #000;
+    background: transparent;
+    min-width: 200px;
+    padding: 0 5px;
+}
+
+input[id="search"]::-webkit-search-decoration,
+input[id="search"]::-webkit-search-cancel-button,
+input[id="search"]::-webkit-search-results-button,
+input[id="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+.search-clear-btn{
+    display: inline-block;
+    width: 1.6rem;
+    height: 1.6rem;
+    line-height: 1.6rem;
+    border: 1px solid #000;
+    border-radius: 50%;
+    padding: 0;
+    font-family: 'Edu SA Beginner';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

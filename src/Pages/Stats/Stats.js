@@ -1,73 +1,65 @@
 import React, { useState, useEffect } from "react";
 import "./Stats.css";
-import searchIcon from "../../Assets/search-icon.svg";
-import closeIcon from "../../Assets/close-icon.svg";
-import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar/SearchBar";
+import Results from "./Results/Results";
+import ClearResults from "./ClearResults/ClearResults";
 
 function Stats() {
   const [data, setData] = useState([]);
-  const [query, setQuery] = useState("");
-
-  const keys = ["date", "result", "yourCurrentScore", "computerCurrentScore"]
-
-  function search(dataSearch) {
-    let updatedData = dataSearch.filter(item => 
-      keys.some(key => String(item[key]).toLowerCase().includes(query))
-    )
-    // setData(updatedData)
-    return updatedData
-  }
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("rpsls") != null) {
       setData(JSON.parse(localStorage.getItem("rpsls")));
     }
-    console.log("triggered useeffect 1001");
   }, []);
+
+  console.log("data aoutside useeffect", data);
+
+  useEffect(() => {
+    if (searchTerm !== "" && data !== null) {
+      console.log("searchTerm2144 ----->", searchTerm);
+      const newData = data.filter((item) => {
+        return (
+          item.result.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          item.yourCurrentScore
+            .toString()
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()) ||
+          item.computerCurrentScore
+            .toString()
+            .toLowerCase()
+            .includes(searchTerm.toLowerCase()) ||
+          item.date.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+      });
+      console.log("newdata --- ",newData)
+      setData(newData);
+    } else {
+      console.log("else triggered")
+      setData(JSON.parse(localStorage.getItem("rpsls")));
+    }
+    console.log("data2144 ----> ", data);
+  }, [searchTerm]);
 
   function clearStats() {
     localStorage.removeItem("rpsls");
     setData([]);
   }
 
-  function clearQuery() {
-    setQuery("");
+  function clearSearch() {
+    setSearchTerm("");
   }
-
-  useEffect(()=>{
-    setData(search(data))
-  },[query])
-
-  console.log(data)
 
   return (
     <section className="stats-wrapper">
-      <div className="search-bar-box">
-        <img src={searchIcon} alt="searchIcon" />
-        <input
-          type="search"
-          name="search"
-          id="search"
-          className="search-bar"
-          placeholder="win, draw, august, 2022"
-          value={query}
-          onChange={e => setQuery(e.target.value.toLowerCase())}
-        />
-        <img src={closeIcon} alt="closeIcon" onClick={clearQuery} />
-      </div>
-      <div className="results-section">
-        {[...data].reverse().map((item) => (
-          <p className="result" key={item.id}>
-            <span>{`${item.result} ${item.yourCurrentScore}-${item.computerCurrentScore}`}</span>
-            <span>{`${item.date}, ${item.time}`}</span>
-          </p>
-        ))}
-      </div>
-      <div className="clear-stats-btn-wrapper">
-        <Link to="#" onClick={clearStats} className="clear-stats-btn">
-          clear stats
-        </Link>
-      </div>
+      <SearchBar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        clearSearch={clearSearch}
+      />
+      <Results data={data} />
+      <ClearResults clearStats={clearStats} />
     </section>
   );
 }
