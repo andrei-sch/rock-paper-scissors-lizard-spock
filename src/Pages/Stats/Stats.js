@@ -5,7 +5,7 @@ import Results from "./Results/Results";
 import ClearResults from "./ClearResults/ClearResults";
 
 function Stats() {
-  const [data, setData] = useState()
+  const [data, setData] = useState();
   const [results, setResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -16,7 +16,7 @@ function Stats() {
   }, []);
 
   useEffect(() => {
-    console.log("undefined!!!!",data)
+    console.log("undefined!!!!", data);
     if (searchTerm !== "") {
       const newData = data.filter((item) => {
         return (
@@ -32,7 +32,7 @@ function Stats() {
           item.date.toLowerCase().includes(searchTerm.toLowerCase())
         );
       });
-      console.log("newdata --- ",newData)
+      console.log("newdata --- ", newData);
       setResults(newData);
     } else {
       // console.log("else triggered")
