@@ -18,6 +18,7 @@
 
 img[alt="closeIcon"] {
     width: 1.1rem;
+    cursor: pointer;
 }
 
 .search-bar {
