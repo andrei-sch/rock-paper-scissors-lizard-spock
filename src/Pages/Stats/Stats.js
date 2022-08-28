@@ -44,6 +44,7 @@ function Stats() {
   function clearStats() {
     localStorage.removeItem("rpsls");
     setResults([]);
+    setData([]);
   }
 
   function clearSearch() {
