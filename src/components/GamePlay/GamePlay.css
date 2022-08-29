@@ -38,6 +38,15 @@
     width: 100%;
     height: auto;
 }
+@media screen and (max-height: 630px) {
+    .choose-your-weapon {
+        min-height: 180px;
+    }
+    .choose-your-weapon img{
+        width: 80%;
+        height: auto;
+    }
+  }
 
 .chosen-options-wrapper {
     display: flex;

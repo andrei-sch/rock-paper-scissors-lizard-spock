@@ -38,3 +38,9 @@ footer {
   text-decoration: none;
   color: #000;
 }
+
+@media screen and (max-height: 630px) {
+  footer {
+      margin-top: 20px;
+  }
+}
