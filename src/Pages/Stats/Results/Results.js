@@ -2,10 +2,10 @@ import React from "react";
 import "./Results.css";
 import playSomeGames from "../../../Assets/play-some-games-vulcan.svg";
 
-function Results({ data }) {
+function Results({ results, data }) {
   return (
     <>
-      {console.log("data de aiciiiiii", data)}
+      {console.log("results de aiciiiiii", results)}
       {(data === undefined || data.length === 0) && (
         <div className="empty-stats">
           <div className="play-some-games">
@@ -13,12 +13,12 @@ function Results({ data }) {
           </div>
         </div>
       )}
-      {data !== undefined && (
+      {results !== undefined && (
         <div className="overflowtest">
           <div className="results-section">
-            {console.log("data from results component", data)}
-            {data &&
-              data
+            {console.log("results from results component", results)}
+            {results &&
+              results
                 .slice()
                 .reverse()
                 .map((item) => (

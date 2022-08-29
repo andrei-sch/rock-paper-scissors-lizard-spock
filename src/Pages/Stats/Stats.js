@@ -58,7 +58,7 @@ function Stats() {
         setSearchTerm={setSearchTerm}
         clearSearch={clearSearch}
       />
-      <Results data={results} />
+      <Results results={results} data={data}/>
       {console.log("results spitted: ----",results)}
       {(results === undefined || results.length === 0) ? null : (<ClearResults clearStats={clearStats} />)}
     </section>
