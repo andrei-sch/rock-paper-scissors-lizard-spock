@@ -13,7 +13,12 @@
   font-style: normal;
   font-weight: 500;
   font-size: 1.8rem;
+}
 
+#rulz-img{
+  max-width: 70vw;
+  max-height: 70vh;
+  align-self: center;
 }
 
 .close-modal-popup {
