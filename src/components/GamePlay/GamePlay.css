@@ -3,7 +3,7 @@
     justify-content: space-evenly;
     align-items: center;
     flex-direction: column;
-    gap: 20px;
+    /* gap: 20px; */
     font-family: 'Edu SA Beginner';
     font-size: 1.3rem;
     margin-top: 20px;
@@ -44,7 +44,6 @@
     justify-content: center;
     align-items: center;
     gap: 50px;
-    margin-top: 20px;
     min-height: 200px;
 }
 
@@ -55,7 +54,7 @@
     flex-direction: column;
     gap: 10px;
     width: 130px;
-    height: 200px;
+    height: 150px;
 }
 
 .my-chosen-sign-text,.computer-chosen-sign-text {
@@ -76,12 +75,27 @@
     justify-content: space-evenly;
     align-items: center;
     flex-wrap: nowrap;
-    margin-top: 30px;
+    /* margin-top: 30px; */
     gap: 10px;
+}
+@media only screen and (max-width: 470px){
+    .pick-an-option-buttons {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: nowrap;
+        /* margin-top: 30px; */
+        gap: 2px;
+    }
 }
 
 .img-circle-options {
     width: 80px;
+}
+@media only screen and (max-width: 415px){
+    .img-circle-options {
+        width: 70px;
+    }
 }
 
 .img-circle-options-btn {

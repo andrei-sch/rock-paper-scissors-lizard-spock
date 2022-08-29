@@ -17,6 +17,9 @@ function Footer() {
           <a href="mailto:andrei.schrenck@gmail.com"><img src={gmail} alt="Mail" /></a>
         </div>
       </div>
+      <div className="disclaimer">
+        <p>**Spock images are taken from <i><a href='https://icons8.com'>icons8</a></i></p>
+      </div>
     </footer>
   )
 }

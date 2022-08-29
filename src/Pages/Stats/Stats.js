@@ -59,7 +59,8 @@ function Stats() {
         clearSearch={clearSearch}
       />
       <Results data={results} />
-      <ClearResults clearStats={clearStats} />
+      {console.log("results spitted: ----",results)}
+      {(results === undefined || results.length === 0) ? null : (<ClearResults clearStats={clearStats} />)}
     </section>
   );
 }

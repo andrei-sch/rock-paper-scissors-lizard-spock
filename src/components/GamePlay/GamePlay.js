@@ -216,7 +216,6 @@ function GamePlay() {
         </div>
         {turnsLeft === 10 ? (
           <div className="choose-your-weapon">
-            {/* <p>choose your weapon:</p> */}
             <img src={ChooseWeaponSpock} alt="choose-weapon-spock" />
           </div>
         ) : (

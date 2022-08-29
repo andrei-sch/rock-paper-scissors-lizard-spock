@@ -33,6 +33,23 @@ input[id="search"]::-webkit-search-results-decoration {
   -webkit-appearance:none;
 }
 
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgb(173, 173, 173);
+    font-size: .8em;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: rgb(173, 173, 173);
+    font-size: .8em;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: rgb(173, 173, 173);
+    font-size: .8em;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: rgb(173, 173, 173);
+    font-size: .8em;
+  }
+
 .search-clear-btn{
     display: inline-block;
     width: 1.6rem;
