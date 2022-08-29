@@ -27,11 +27,16 @@
 }
 
 .choose-your-weapon {
-    min-height: 170px;
+    min-height: 220px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.6rem;
+}
+
+.choose-your-weapon img{
+    width: 100%;
+    height: auto;
 }
 
 .chosen-options-wrapper {

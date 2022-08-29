@@ -5,6 +5,7 @@ import uuid from "react-uuid";
 import ImageGetter from "../ImageGetter/ImageGetter";
 import ImageGetterBtn from "../ImageGetter/ImageGetterBtn";
 import EndGame from "../Modals/EndGame/EndGame";
+import ChooseWeaponSpock from "../../Assets/choose-your-weapon-vulcan.svg"
 import "./GamePlay.css";
 
 function GamePlay() {
@@ -215,7 +216,8 @@ function GamePlay() {
         </div>
         {turnsLeft === 10 ? (
           <div className="choose-your-weapon">
-            <p>choose your weapon:</p>
+            {/* <p>choose your weapon:</p> */}
+            <img src={ChooseWeaponSpock} alt="choose-weapon-spock" />
           </div>
         ) : (
           <div className="chosen-options-wrapper">
