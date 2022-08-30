@@ -4,6 +4,8 @@ import linkedin from "../../Assets/LinkedIn_black.png"
 import github from "../../Assets/Github_black.png"
 import gmail from "../../Assets/Gmail_black.png"
 
+//footer
+
 function Footer() {
   return (
     <footer>

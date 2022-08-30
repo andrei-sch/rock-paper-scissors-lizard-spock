@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import "./RulzModal.css"
-import rulez from "../../../Assets/rulezz.svg"
 import rulez1 from "../../../Assets/rulezz-1.svg"
+
+//it fires a React Portal with the game rules
+//the rules are displayed on an overlay over the entire viewport
 
 function RulzModal({open,onClose}) {
     

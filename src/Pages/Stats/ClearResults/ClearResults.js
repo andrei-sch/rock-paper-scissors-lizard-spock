@@ -2,6 +2,7 @@ import React from 'react'
 import "./ClearResults.css"
 import { Link } from "react-router-dom";
 
+//it deletes the data from the browser's local storage
 
 function ClearResults(props) {
   return (

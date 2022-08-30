@@ -2,10 +2,13 @@ import React from "react";
 import "./Results.css";
 import playSomeGames from "../../../Assets/play-some-games-vulcan.svg";
 
+// here the data (even the filtered data from the input) from the local storage is displayed
+// data -> the data from the local storage
+// results -> the data that is printed out
+
 function Results({ results, data }) {
   return (
     <>
-      {console.log("results de aiciiiiii", results)}
       {(data === undefined || data.length === 0) && (
         <div className="empty-stats">
           <div className="play-some-games">
@@ -16,7 +19,6 @@ function Results({ results, data }) {
       {results !== undefined && (
         <div className="overflowtest">
           <div className="results-section">
-            {console.log("results from results component", results)}
             {results &&
               results
                 .slice()

@@ -1,5 +1,7 @@
 import React from 'react'
 
+// fetches the image from the /Assets folder and sets its style
+
 function ImageGetter({name,classStyle}) {
     //import image
     const image = require(`../../Assets/${name}.png`)

@@ -3,23 +3,32 @@ import { NavLink, useLocation } from "react-router-dom";
 import RulzModal from "../Modals/RulzModal/RulzModal";
 import "./Nav.css";
 
+//Nav is the top header menu with logo and buttons
 
 function Nav() {
+  //holds the state of the Rules overlay
+  const [isRulzModalOpen, setIsRulzModalOpen] = useState(false);
 
-  const [isRulzModalOpen, setIsRulzModalOpen] = useState(false)
-
+  //style for the active nav links
+  //if a btn from nav is clicked, it stays red
   let activeStyle = {
     color: "#f00",
   };
- 
-  let location = useLocation()
 
+  //useLocation returns the location object that contains information about the current URL 
+  let location = useLocation();
+
+  //it redirects to home page when you click 'new game'
+  //it was needed to force reload the page when you are already on "/"
   const reloadPage = () => {
     if (location.pathname === "/") {
-      window.location.reload()
+      window.location.reload();
     }
-}
+  };
 
+  //isActive - is from React Router for <NavLink>; used for determining whether the link is active
+  // <RulzModal> is a react portal that displays the overlay over the entire app with the game rules
+  
   return (
     <nav>
       <section className="nav-logo-section">
@@ -46,14 +55,19 @@ function Nav() {
         <NavLink
           to="#"
           className="nav-links"
-          // style={({ isActive }) => (isActive ? activeStyle : undefined)} TBD
-          onClick={()=>setIsRulzModalOpen(true)}
+          // it opens the React Portal for the "rulz" overlay
+          onClick={() => setIsRulzModalOpen(true)}
           end
         >
           rulz
         </NavLink>
       </section>
-      {isRulzModalOpen ? <RulzModal open={isRulzModalOpen} onClose={()=>setIsRulzModalOpen(false)}/> : null}
+      {isRulzModalOpen ? (
+        <RulzModal
+          open={isRulzModalOpen}
+          onClose={() => setIsRulzModalOpen(false)}
+        />
+      ) : null}
     </nav>
   );
 }

@@ -4,6 +4,10 @@ import GamePlay from "./components/GamePlay/GamePlay";
 import Home from "./components/Home/Home";
 import Stats from "./Pages/Stats/Stats";
 
+//starting point of the app
+//<Home> holds the main structure
+//<Outlet> component in <Home> is replaced by <Gameplay> or <Stats> component, depending on the Route you are on
+
 const App = () => {
   return (
     <>

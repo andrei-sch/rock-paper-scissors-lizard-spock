@@ -3,6 +3,8 @@ import "./SearchBar.css"
 import searchIcon from "../../../Assets/search-icon.svg";
 import closeIcon from "../../../Assets/close-icon.svg";
 
+// it's the searchbar component from the Stats page
+
 function SearchBar({searchTerm,setSearchTerm,clearSearch}) {
   return (
     <div className="search-bar-box">

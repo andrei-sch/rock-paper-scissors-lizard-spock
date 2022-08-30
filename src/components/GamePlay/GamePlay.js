@@ -8,38 +8,43 @@ import EndGame from "../Modals/EndGame/EndGame";
 import ChooseWeaponSpock from "../../Assets/choose-your-weapon-vulcan.svg"
 import "./GamePlay.css";
 
+// this component is actually the canvas where the game is played
+
 function GamePlay() {
-  const [turnsLeft, setTurnsLeft] = useState(10);
+  const [turnsLeft, setTurnsLeft] = useState(10);   //keeping track of the turns left to 10
   const [yourCurrentScore, setYourCurrentScore] = useState(0);
   const [computerCurrentScore, setComputerCurrentScore] = useState(0);
-  const [turnMessage, setTurnMessage] = useState(
+  const [turnMessage, setTurnMessage] = useState(   //message shown in green after each turn
     "best score of 10 turns wins!"
   );
-  const [yourChoice, setYourChoice] = useState("");
-  const [computerChoice, setComputerChoice] = useState("");
-  const [gameOver, setGameOver] = useState(false);
-  const [showDelayedComponent, setShowDelayedComponent] = useState(false)
+  const [yourChoice, setYourChoice] = useState("");  //your choice; helps fetching the image w/ your choice
+  const [computerChoice, setComputerChoice] = useState(""); //computer choice; helps fetching the image w/ computer choice
+  const [gameOver, setGameOver] = useState(false); //fires when it reaches 0 turns and the game is over; 
+  const [showDelayedComponent, setShowDelayedComponent] = useState(false)   //fires the <EndGame> overlay and hides the other components that are used for playing the game
 
+  // game choices
   const choices = ["rock", "paper", "scissors", "lizard", "spock"];
 
+  // fires when you click an option
   const handleClickOption = (choice) => {
     setYourChoice(() => choice);
     generateComputerChoice();
   };
 
+  // generates computer choice
   const generateComputerChoice = () => {
     const item = choices[Math.floor(Math.random() * choices.length)];
     setComputerChoice(() => item);
     setTurnsLeft((prev) => prev - 1);
   };
 
-
+  // if the game is over fires the react portal with the endgame results overlay
   gameOver && (setTimeout(()=>{
     console.log("FIRED!!!")
     setShowDelayedComponent(true)
   },1500))
 
-
+  // gameplay rules; who beats who
   useEffect(() => {
     const comboPick = yourChoice + computerChoice;
 
@@ -164,8 +169,8 @@ function GamePlay() {
     };
   }, [yourChoice, computerChoice, turnsLeft]);
 
+  //store turn data and results in local storage
   useEffect(() => {
-    
   // ---- local storage ----
   let time = moment();
   let resultScore = yourCurrentScore - computerCurrentScore;
@@ -196,30 +201,36 @@ function GamePlay() {
 
   return (
     <>
-      {showDelayedComponent && (gameOver ? (
+      {showDelayedComponent && (gameOver ? (  //displays <EndGame> when the game ends
         <EndGame
           yourScore={yourCurrentScore}
           compScore={computerCurrentScore}
         />
       ) : null )}
       <section className="game-container">
+        {/* turns left to play */}
         <div className="turns-left">
           <p>turns left: {turnsLeft}</p>
         </div>
-        <div className="current-score">
+        {/* current score section */}
+        <div className="current-score">   
           <span id="my-current-score">{yourCurrentScore}</span>
           <span id="colon-current-score">:</span>
           <span id="computer-current-score">{computerCurrentScore}</span>
         </div>
+        {/* in-game message */}
         <div className="in-game-turn-message">
           <p>{turnMessage}</p>
         </div>
-        {turnsLeft === 10 ? (
+        {turnsLeft === 10 ? (   //at the beginning of the game shows Vulcan telling u to pick an option
           <div className="choose-your-weapon">
             <img src={ChooseWeaponSpock} alt="choose-weapon-spock" />
           </div>
-        ) : (
+        ) : (             //  when you clicked an option, display the game components like current choice images
           <div className="chosen-options-wrapper">
+            {/* my chosen sign image 
+            <ImageGetter> fetches the image from /Assets folder 
+            */}
             <div className="my-chosen-sign">
               <ImageGetter
                 name={`${yourChoice}`}
@@ -227,6 +238,7 @@ function GamePlay() {
               />
               <span className="my-chosen-sign-text">you</span>
             </div>
+            {/* computer chosen sign image */}
             <div className="computer-chosen-sign">
               <ImageGetter
                 name={`${computerChoice}`}
@@ -236,8 +248,10 @@ function GamePlay() {
             </div>
           </div>
         )}
+        {/* if the game is not over, display the option-buttons images */}
         {!gameOver && (<div className="pick-an-option-buttons">
           {choices.map((choice, index) => {
+            //             <ImageGetterBtn> fetches the image from /Assets folder and transforms it into a button
             return (
               <ImageGetterBtn
                 name={`${choice}-circle`}
