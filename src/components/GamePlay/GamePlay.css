@@ -63,7 +63,7 @@
     flex-direction: column;
     gap: 10px;
     width: 130px;
-    height: 150px;
+    height: 120px;
 }
 
 .my-chosen-sign-text,.computer-chosen-sign-text {
@@ -73,10 +73,12 @@
 .computer-chosen-sign-image {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
+    max-width: 75px;
+    max-height: 75px;
 }
 .my-chosen-sign-image {
-    /* -webkit-transform: scaleX(-1);
-    transform: scaleX(-1); */
+    max-width: 75px;
+    max-height: 75px;
 }
 
 .pick-an-option-buttons {
