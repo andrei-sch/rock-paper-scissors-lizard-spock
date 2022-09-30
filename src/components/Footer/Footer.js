@@ -14,8 +14,8 @@ function Footer() {
           <span>Andrei Schrenck, 2022</span>
         </div>
         <div className="footer-social-media">
-          <a href="http://linkedin.com"><img src={linkedin} alt="LinkedIn" /></a>
-          <a href="http://github.com"><img src={github} alt="GitHub" /></a>
+          <a href="https://www.linkedin.com/in/andrei-schrenck-0a2672a8"><img src={linkedin} alt="LinkedIn" /></a>
+          <a href="https://github.com/andrei-sch/rock-paper-scissors-lizard-spock"><img src={github} alt="GitHub" /></a>
           <a href="mailto:andrei.schrenck@gmail.com"><img src={gmail} alt="Mail" /></a>
         </div>
       </div>
